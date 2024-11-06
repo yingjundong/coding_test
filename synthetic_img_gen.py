@@ -1,5 +1,6 @@
 import numpy as np 
 import matplotlib.pyplot as plt
+from PIL import Image
 from skimage.draw import disk
 from skimage.util import random_noise
 from skimage.filters import gaussian
@@ -32,7 +33,7 @@ def gen_syn_img(height, width, num_cells, fluore_level, cell_size, shape, noise_
     fluore_img = random_noise(fluore_img, mode='gaussian', var=noise_level)
     fluore_img = (fluore_img * 65535).astype(np.uint16) # convert to 16-bit image
     
-    return fluore_img, label_img
+    return Image.fromarray(fluore_img), Image.fromarray(label_img)
 
 # generate synthetic image
 height = 128
@@ -56,3 +57,10 @@ ax2.set_title('Synthetic Labeled Image')
 fig.colorbar(im1, ax=ax1, orientation='horizontal')
 fig.colorbar(im2, ax=ax2, orientation='horizontal')
 plt.show()
+
+        
+        
+        
+        
+            
+    
